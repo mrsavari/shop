@@ -1,0 +1,42 @@
+<div class="card card-dark">
+    <div class="card-header">
+        <h3 class="card-title"><%- pageTitle %></h3>
+    </div>
+    <% if(type === 'Edit'){ %>
+        <form role="form" action="/dashboard/setProvider/<%- data._id %>" method="POST">
+    <% } else { %>
+        <form role="form" action="/dashboard/newProvider" method="POST">
+    <% }%>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    <label>نام انگلیسی</label>
+                    <% if(type === 'Edit') { %>
+                        <input type="text" name="englishName" value="<%- data.englishName %>" class="form-control">
+                    <% } else { %> 
+                        <input type="text" name="englishName" class="form-control">
+                    <% } %> 
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    <label>نام فارسی</label>
+                    <% if(type === 'Edit') { %>
+                        <input type="text" name="name" value="<%- data.name %>" class="form-control">
+                    <% } else { %> 
+                        <input type="text" name="name" class="form-control">
+                    <% } %> 
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.card-body -->
+
+    <div class="card-footer">
+        <button type="submit" class="btn btn-outline-primary">ارسال</button>
+        <button type="reset" class="btn btn-outline-danger">پاک کردن اطلاعات</button>
+    </div>
+    </form>
+</div>
+<!-- /.card -->

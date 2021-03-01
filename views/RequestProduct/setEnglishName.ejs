@@ -1,0 +1,21 @@
+<div class="card card-dark">
+    <div class="card-header">
+        <h3 class="card-title"><%- pageTitle %></h3>
+    </div>
+        <form role="form" action="/dashboard/changeRequestedProductEnglishName" method="POST">
+    <div class="card-body">
+        <div class="form-group">
+            <label>نام انگلیسی محصول</label>
+            <input type="text" name="productEnglishName" class="form-control">
+            <input type="hidden" value="<%- id %>" name="id">
+        </div>
+    </div>
+    <!-- /.card-body -->
+
+    <div class="card-footer">
+        <button type="submit" class="btn btn-outline-primary">ارسال</button>
+        <button type="reset" class="btn btn-outline-danger">پاک کردن اطلاعات</button>
+    </div>
+    </form>
+</div>
+<!-- /.card -->

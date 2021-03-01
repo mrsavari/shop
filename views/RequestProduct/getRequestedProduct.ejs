@@ -1,0 +1,55 @@
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title"><%- pageTitle %></h3>
+        <h6 class="mt-2"><%- countTitle %> : <%- data.total || data.length %></h6>
+
+    <div class="card-tools">
+        <div class="input-group input-group-sm">
+            <input type="text" name="table_search" class="form-control float-right" id="searched_name" placeholder="جستجو بر اساس نام محصول">
+
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-default" id="search_product_btn"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="card-body table-responsive p-0">
+    <table class="table table-hover">
+        <tbody>
+            <tr>
+                <th>درخواست دهنده</th>
+                <th>تلفن</th>
+                <th>نام محصول</th>
+                <th>تاریخ</th>
+                <th>وضعیت</th>
+                <th>تغییر وضعیت</th>
+            </tr>
+            <% data.forEach(element => { %>
+                <% !element.userId ? element.userId = { uName:' ' , uLastName:' ' , uPhoneNumber :' ' } : ('') %>
+                <tr>
+                    <td><%- element.userId.uName %><%- element.userId.uLastName %></td>
+                    <td><%- element.userId.uPhoneNumber %></td>
+                    <td><%- element.productName %></td>
+                    <td><%- moment(element.Date).format('jYYYY/jMM/jD') %></td>
+                    <% if(element.supportStatus === 'new'){ %>
+                        <td><span class="badge badge-danger">جدید</span></td>
+                    <% } else if(element.supportStatus === 'watching') { %>
+                        <td><span class="badge badge-primary">در حال بررسی</span></td>
+                    <% } else if (element.supportStatus === 'finish') { %>
+                        <td><span class="badge badge-success">تمام شده</span></td>
+                    <% } %>
+                    <td>
+                        <% if(element.supportStatus !== "finish"){ %>
+                            <a href="/dashboard/requestProduct_chagngeStatus?id=<%- element.id %>&status=watching" class="btn-sm btn-primary" >درحال بررسی</a>
+                            <a href="/dashboard/requestProduct_chagngeStatus?id=<%- element.id %>&status=finish" class="btn-sm btn-primary">تمام شده</a>
+                        <% } else { %>
+                            <a href="#" class="btn-sm btn-accend">تمام شده</a>
+                        <% } %>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    <%- include('../partials/Component_Paginate.ejs' , {data}) %>
+    </div>
+</div>

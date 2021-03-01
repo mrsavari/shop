@@ -1,0 +1,9 @@
+<% if (error != "") {%>
+    <div class="alert shadow alert-danger d-flex justify-content-center flex-column align-items-center py-0 pt-2">
+      <% if (typeof error == 'object' && error.length > 0) { error.forEach((err) => { %>
+        <span class="my-1"><%- err %></span>
+      <% })} else{ %>
+        <span><%- error %></span>
+      <% } %>
+    </div>
+<% } %>

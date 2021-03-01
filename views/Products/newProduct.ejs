@@ -1,0 +1,234 @@
+<div class="card card-dark wysihtml5-supported">
+    <div class="card-header">
+        <h3 class="card-title"><%- pageTitle %></h3>
+    </div>
+    <% if(type === 'Edit'){ %>
+        <form role="form" action="/dashboard/setProduct/<%- data._id %>" method="POST">
+    <% } else { %>
+        <form role="form" action="/dashboard/NewProduct" method="POST" enctype="multipart/form-data">
+    <% }%>
+
+    
+    <div class="card-body">
+
+        <!-- Product Title Section -->
+        <div class="form-group">
+            <label>نام محصول</label>
+            <% if(type === 'Edit') { %>
+                <input type="text" disabled name="Title" value="<%- data.Title %>" class="form-control">
+            <% } else { %> 
+                <input type="text" name="Title" class="form-control">
+            <% } %> 
+        </div>
+        <div class="form-group">
+            <label>نام انگلیسی محصول</label>
+            <% if(type === 'Edit') { %>
+                <input type="text" disabled name="EnglishTitle" value="<%- data.EnglishTitle %>" class="form-control">
+            <% } else { %> 
+                <input type="text" name="EnglishTitle" class="form-control">
+            <% } %> 
+        </div>
+        <!-- Product Title Section -->
+
+        <!-- Produt Body Section -->
+        <div class="form-group">
+            <label>توضیحات محصول</label>
+            <% if(type === 'Edit') { %>
+                <textarea type="text" name="Body" style="height: 22rem; direction: rtl;" class="form-control"><%- data.Body %></textarea>
+            <% } else { %>
+                <textarea type="text" name="Body" style="height: 22rem; direction: rtl;" class="form-control"></textarea>
+            <% } %>
+        </div>
+        <!-- Produt Body Section -->
+
+        <!-- Seo Section -->
+        <div class="form-group">
+            <label>کلمات کلیدی (Seo)</label>
+            <% if(type === 'Edit') { %>
+              <textarea type="text" name="Meta" style="height: 10rem; direction: rtl;" class="form-control"><%- data.Meta %></textarea>
+            <% } else { %> 
+              <textarea type="text" name="Meta" style="height: 10rem; direction: rtl;" class="form-control"></textarea>
+            <% } %> 
+        </div>
+        <!-- Seo Section -->
+
+        <!-- Product Status Section Start -->
+        <% if(type === 'Edit') { %>
+            <div class="form-group">
+                <label>وضعیت محصول</label>
+                <input type="radio" name="Salable" value="true">
+                <label>فعال</label>
+                <input type="radio" name="Salable" value="false">
+                <label>غیر فعال</label>
+            </div>
+        <% } %>
+        <!-- Product Status Section End -->
+
+        <!-- Price And Another Price Section Start-->
+        <div class="row">
+          <div class="col-6">
+              <div class="form-group">
+                  <label>قیمت محصول</label>
+                  <% if(type === 'Edit') { %>
+                      <input type="text" name="price" value="<%- data.price %>" class="form-control">
+                  <% } else { %> 
+                      <input type="text" name="price" class="form-control">
+                  <% } %> 
+              </div>
+          </div>
+          <div class="col-6">
+              <div class="form-group">
+                  <label>قیمت محصول در سایر سایت ها</label>
+                  <% if(type === 'Edit') { %>
+                      <input type="text" name="AnotherSitePrice" value="<%- data.AnotherSitePrice %>" class="form-control">
+                  <% } else { %> 
+                      <input type="text" name="AnotherSitePrice" class="form-control">
+                  <% } %> 
+              </div>
+          </div>
+        </div>
+        <!-- Price And Another Price Section End-->
+
+        <!-- Colors And Inventory Section Start -->
+        <div class="row">
+          <div class="col-6">
+              <div class="form-group">
+                    <label>دسته بندی</label>
+                    <select name="categories" class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                        <% if(type !== 'Edit') { %>
+                            <% categories.forEach(cat => {  %>
+                                <option value="<%- cat.EnglishName %>"><%- cat.PersianName %></option>
+                            <% }) %>
+                        <% } else { %>
+                            <option><%- data.Category %></option>
+                        <% } %>
+                    </select>
+              </div>
+          </div>
+          <div class="col-6">
+              <div class="form-group">
+                  <label>موجودی انبار</label>
+                  <% if(type === 'Edit') { %>
+                      <input type="text" name="InventoryCount" value="<%- data.InventoryCount %>" class="form-control">
+                  <% } else { %> 
+                      <input type="text" name="InventoryCount" class="form-control">
+                  <% } %> 
+              </div>
+          </div>
+        </div>
+        <!-- Colors And Inventory Section End -->
+
+        <!-- Provider And Category Start -->
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    <% if(type !== 'Edit') { %>
+                    <label>نوع</label>
+                    <select name="CategoryChild" class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                            <% categoryChilds.forEach(cat => {  %>
+                                <option value="<%- cat.EnglishName %>"><%- cat.PersianName %></option>
+                            <% }) %>
+                    </select>
+                    <% } %>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    <% if(type !== 'Edit') { %>
+                    <label>تامین کننده</label>
+                    <select name="Provider" class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                            <% providers.forEach(provider => {  %>
+                                <option value="<%- provider.englishName %>"><%- provider.name %></option>
+                            <% }) %>
+                    </select>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Picture Start -->
+        <% if(type !== 'Edit') { %>
+        <h4 class="my-4">تصاویر محصول</h4>
+        <div class="alert alert-warning">
+            <p>داشتن حداقل 2 عکس علاوه بر تصویر اصلی اجباری می باشد</p>
+            <p>لطفا تمامی عکس ها بدون بک گراند و مربعی باشند در سایز 190 * 190</p>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <div class="input-group my-2">
+                    <div class="custom-file">
+                        <input name="gallery" type="file" class="custom-file-input" id="exampleInputFile">
+                        <label class="custom-file-label" for="exampleInputFile">تصویر اصلی</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="input-group my-2">
+                    <div class="custom-file">
+                        <input name="gallery" type="file" class="custom-file-input" id="exampleInputFile">
+                        <label class="custom-file-label" for="exampleInputFile">تصویر 1</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <div class="input-group my-2">
+                    <div class="custom-file">
+                        <input type="file" name="gallery" class="custom-file-input" id="exampleInputFile">
+                        <label class="custom-file-label" for="exampleInputFile">تصویر 2</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="input-group my-2">
+                    <div class="custom-file">
+                        <input type="file" name="gallery" class="custom-file-input" id="exampleInputFile">
+                        <label class="custom-file-label" for="exampleInputFile">تصویر 3</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <div class="input-group my-2">
+                    <div class="custom-file">
+                        <input type="file" name="gallery" class="custom-file-input" id="exampleInputFile">
+                        <label class="custom-file-label" for="exampleInputFile">تصویر 4</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="input-group my-2">
+                    <div class="custom-file">
+                        <input type="file" name="gallery" class="custom-file-input" id="exampleInputFile">
+                        <label class="custom-file-label" for="exampleInputFile">تصویر 5</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% } %>
+        <!-- Picture End -->
+        
+
+
+    </div>
+    <!-- /.card-body -->
+
+    <div class="card-footer">
+        <button type="submit" class="btn btn-outline-primary">ارسال</button>
+        <button type="reset" class="btn btn-outline-danger">پاک کردن اطلاعات</button>
+    </div>
+    </form>
+</div>
+<!-- /.card -->
+
+<div class="ck ck-reset_all ck-body ck-rounded-corners">
+    <div class="ck ck-balloon-panel ck-balloon-panel_arrow_nw ck-balloon-panel_with-arrow" style="top: 0px; left: 0px;"></div>
+</div>

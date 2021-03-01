@@ -1,0 +1,35 @@
+<div class="card card-dark">
+    <div class="card-header">
+        <h3 class="card-title"><%- pageTitle %></h3>
+    </div>
+    <div class="card-body">
+    <form role="form" action="/dashboard/newReport" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <label>چی شده ؟ ( یک توضیح کوتاه بدین که چه شده )</label>
+            <textarea name="ErrorDesc" style="width: 100%; height: 10rem;direction: ltr;">
+            </textarea>
+        </div>
+
+        <div class="form-group">
+            <label>اگر ارور داده متنش رو اینجا کپی کنید</label>
+            <textarea name="ErrorBody" style="width: 100%; height: 10rem;direction: ltr;">
+            </textarea>
+        </div>
+
+        <label>اگرم میخواین عکس ارور رو بفرستین</label>
+        <div class="input-group my-2">
+            <div class="custom-file">
+                <input type="file" name="ErrorPic" class="custom-file-input" id="exampleInputFile">
+                <label class="custom-file-label" for="exampleInputFile"></label>
+            </div>
+        </div>
+    </div>
+    <!-- /.card-body -->
+
+    <div class="card-footer">
+        <button type="submit" class="btn btn-outline-primary">ارسال</button>
+        <button type="reset" class="btn btn-outline-danger">پاک کردن اطلاعات</button>
+    </div>
+    </form>
+</div>
+<!-- /.card -->

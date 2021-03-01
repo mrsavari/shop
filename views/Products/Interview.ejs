@@ -1,0 +1,62 @@
+<div class="card card-dark wysihtml5-supported">
+    <div class="card-header">
+        <h3 class="card-title">بررسی اجمالی <%- productName %></h3>
+    </div>
+    <form role="form" action="/dashboard/postInterView" method="POST" enctype="multipart/form-data">
+
+    
+    <div class="card-body">
+
+        <!-- Product Title Section -->
+        <div class="form-group">
+            <label>توضیح اجمالی</label>
+            <textarea type="text" name="shortIntro" class="form-control" style="height: 170px;"></textarea>
+        </div>
+
+        <div class="input-group my-2">
+            <div class="custom-file">
+                <input name="image" type="file" class="custom-file-input" id="exampleInputFile">
+                <label class="custom-file-label" for="exampleInputFile">تصویر توضیح اجمالی</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>توضیحات اول</label>
+            <textarea type="text" name="desc1" class="form-control" style="height: 170px;"></textarea>
+        </div>
+
+        <div class="input-group my-2">
+            <div class="custom-file">
+                <input name="image" type="file" class="custom-file-input" id="exampleInputFile">
+                <label class="custom-file-label" for="exampleInputFile">تصویر توضیح اول</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>توضیحات دوم</label>
+            <textarea type="text" name="desc2" class="form-control" style="height: 170px;"></textarea>
+        </div>
+
+        <div class="input-group my-2">
+            <div class="custom-file">
+                <input name="image" type="file" class="custom-file-input" id="exampleInputFile">
+                <label class="custom-file-label" for="exampleInputFile">تصویر توضیح دوم</label>
+            </div>
+        </div>
+
+        <input type="hidden" value="<%- productId %>" name="id">
+
+    </div>
+    <!-- /.card-body -->
+
+    <div class="card-footer">
+        <button type="submit" class="btn btn-outline-primary">ارسال</button>
+        <button type="reset" class="btn btn-outline-danger">پاک کردن اطلاعات</button>
+    </div>
+    </form>
+</div>
+<!-- /.card -->
+
+<div class="ck ck-reset_all ck-body ck-rounded-corners">
+    <div class="ck ck-balloon-panel ck-balloon-panel_arrow_nw ck-balloon-panel_with-arrow" style="top: 0px; left: 0px;"></div>
+</div>

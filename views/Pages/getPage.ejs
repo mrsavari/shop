@@ -1,0 +1,45 @@
+<div class="card card-dark">
+    <div class="card-header">
+        <h3 class="card-title"><%- pageTitle %></h3>
+    </div>
+    <% if(type === 'Edit'){ %>
+        <form role="form" action="/dashboard/editPage/<%- data.pageName %>" method="POST">
+    <% } else { %>
+        <form role="form" action="/dashboard/newPage" method="POST">
+    <% }%>
+    <div class="card-body">
+        <div class="form-group">
+            <label>نام انگلیسی</label>
+            <% if(type === 'Edit') { %>
+                <input type="text" name="pageName" value="<%- data.pageName %>" class="form-control">
+            <% } else { %> 
+                <input type="text" name="pageName" class="form-control">
+            <% } %> 
+        </div>
+        <div class="form-group">
+            <% if(type !== 'Edit') { %>
+                <label>عنوان</label>
+                <input type="text" name="pageTitle" class="form-control">
+            <% } else { %>
+                <label>عنوان</label>
+                <input type="text" value="<%- data.pageTitle %>" name="pageTitle" class="form-control">
+            <% } %> 
+        </div>
+        <div class="form-group">
+            <label>توضیحات</label>
+            <% if(type === 'Edit') { %>
+                    <textarea type="text" name="Body" style="height: 22rem; direction: rtl;" class="form-control"><%- data.pageBody %></textarea>
+                <% } else { %>
+                    <textarea type="text" name="Body" style="height: 22rem; direction: rtl;" class="form-control" name="pageBody"></textarea>
+                <% } %>
+        </div>
+    </div>
+    <!-- /.card-body -->
+
+    <div class="card-footer">
+        <button type="submit" class="btn btn-outline-primary">ارسال</button>
+        <button type="reset" class="btn btn-outline-danger">پاک کردن اطلاعات</button>
+    </div>
+    </form>
+</div>
+<!-- /.card -->

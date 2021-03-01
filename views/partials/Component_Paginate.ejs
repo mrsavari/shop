@@ -1,0 +1,14 @@
+<div class="dataTables_paginate paging_simple_numbers m-4">
+    <ul class="pagination">
+        <% for(let i = 1 ; i <= data.pages ; i++){
+            if(i+"" === data.page) { %>
+                <li class="paginate_button page-item active">
+                    <a href="/dashboard/Users?page=<%- i %>"class="page-link"><%- i %></a>
+                </li>
+            <% } else { %>
+                <li class="paginate_button page-item">
+                    <a href="/dashboard/Users?page=<%- i %>"class="page-link"><%- i %></a>
+                </li>
+        <% }} %>
+    </ul>
+</div>

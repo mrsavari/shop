@@ -1,0 +1,67 @@
+<div class="container-fluid">
+
+  <!-- Small boxes (Stat box) -->
+  <div class="row">
+      <div class="col-12 col-sm-6 col-md-3">
+        <div class="info-box">
+          <span class="info-box-icon bg-info elevation-1"><i class="fa fa-gear"></i></span>
+
+          <div class="info-box-content">
+            <span class="info-box-text">فضای قابل استفاده رم</span>
+            <span class="info-box-number">
+              <%- usageRam.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %>
+              <small>گیگابایت</small>
+            </span>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+      </div>
+      <!-- /.col -->
+      <div class="col-12 col-sm-6 col-md-3">
+        <div class="info-box mb-3">
+          <span class="info-box-icon bg-danger elevation-1"><i class="fa fa-bullhorn"></i></span>
+
+          <div class="info-box-content">
+            <span class="info-box-text">درخواست محصول</span>
+            <span class="info-box-number"><%- RequestProduct.length %></span>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+      </div>
+      <!-- /.col -->
+
+      <!-- fix for small devices only -->
+      <div class="clearfix hidden-md-up"></div>
+
+      <div class="col-12 col-sm-6 col-md-3">
+        <div class="info-box mb-3">
+          <span class="info-box-icon bg-success elevation-1"><i class="fa fa-shopping-cart"></i></span>
+
+          <div class="info-box-content">
+            <span class="info-box-text">سفارش با تحویل امروز</span>
+            <span class="info-box-number"><%- WeekOrders.length %></span>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+      </div>
+      <!-- /.col -->
+      <div class="col-12 col-sm-6 col-md-3">
+        <div class="info-box mb-3">
+          <span class="info-box-icon bg-warning elevation-1"><i class="fa fa-users"></i></span>
+
+          <div class="info-box-content">
+            <span class="info-box-text">کاربر در این هفته</span>
+            <span class="info-box-number"><%- WeekUsers.length %></span>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+      </div>
+      <!-- /.col -->
+  </div>
+  <%- include('./partials/Component_Chart.ejs') %>
+
+</div>

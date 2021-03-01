@@ -1,0 +1,48 @@
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title"><%- pageTitle %></h3>
+        <h6 class="mt-2"><%- countTitle %> : <%- data.total || data.length %></h6>
+
+    <div class="card-tools">
+        <div class="input-group input-group-sm">
+            <input type="text" name="table_search" class="form-control float-right" id="searched_name" placeholder="جستجو بر اساس نام محصول">
+
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-default" id="search_product_btn"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="card-body table-responsive p-0">
+    <table class="table table-hover">
+        <tbody>
+            <tr>
+                <th>نام محصول</th>
+                <th>نام کاربر</th>
+                <th>تلفن کاربر</th>
+                <th>نظر</th>
+                <th>انتشار</th>
+                <th>وضعیت</th>
+                <th>عملیات</th>
+            </tr>
+            <% data.forEach(element => { %>
+                <% !element.userId ? element.userId = { uName:' ' , uLastName:' ' , uPhoneNumber :' ' } : ('') %>
+                <% !element.productId ? element.productId = { Title:' '} : ('') %>
+                <tr>
+                    <td class="text-sm"><%- element.productEnglishName %></td>
+                    <td class="text-sm"><%- element.userId.uName %><%- element.userId.uLastName %></td>
+                    <td class="text-sm"><%- element.userId.uPhoneNumber %></td>
+                    <td class="text-sm"><%- element.Body %></td>
+                    <td class="text-sm"><%- moment(element.PublishDate).format('jYYYY/jMM/jD') %></td>
+                    <td class="text-sm"><%- element.status %></td>
+                    <td class="text-sm">
+                        <a href="/dashboard/delComment/<%- element.id %>" class="btn-sm btn-danger" >حذف</a>
+                        <a href="/dashboard/getComment/<%- element.id %>" class="btn-sm btn-primary">مشاهده</a>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    <%- include('../partials/Component_Paginate.ejs' , {data}) %>
+    </div>
+</div>

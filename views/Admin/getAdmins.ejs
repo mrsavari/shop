@@ -1,0 +1,45 @@
+<div class="card">
+    <div class="card-header">
+    <h3 class="card-title"><%- pageTitle %></h3>
+    <h6 class="mt-2"><%- countTitle %> : <%- data.total || data.length %></h6>
+
+    <div class="card-tools">
+        <div class="input-group input-group-sm">
+            <input type="text" id="search_number" name="table_search" class="form-control float-right" placeholder="جستجو بر اساس شماره تلفن">
+
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-default" id="search_number_btn"><i class="fa fa-search" ></i></button>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="card-body table-responsive p-0">
+    <table class="table table-hover">
+        <tbody>
+            <%- include('../Elements/TableRow' , {Row : row}) %>
+            
+            <% data.forEach(element => { %>
+                <tr>
+                    <td><%- element.name %> <%- element.lastname %></td>
+                    <td><%- element.phoneNumber %></td>
+                    <td>
+                        <% if(element.status === true) { %>
+                            <span class="badge badge-success">فعال</span>
+                        <% } else { %>
+                            <span class="badge badge-danger">غیر فعال</span>
+                        <% } %>
+                    </td>
+                    <td>
+                        <% if(element.thumbnail === 'https://img.favpng.com/23/0/3/computer-icons-user-profile-clip-art-portable-network-graphics-png-favpng-YEj6NsJygkt6nFTNgiXg9fg9w.jpg') { %>
+                            <span class="badge badge-secondary">پیش فرض</span>
+                        <% } else { %>
+                            <span class="badge badge-primary">دارد</span>
+                        <% } %>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    <%- include('../partials/Component_Paginate.ejs' , {data}) %>
+    </div>
+</div>

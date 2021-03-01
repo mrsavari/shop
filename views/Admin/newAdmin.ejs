@@ -1,0 +1,57 @@
+<div class="card card-dark">
+    <div class="card-header">
+        <h3 class="card-title"><%- pageTitle %></h3>
+    </div>
+    <% if(type === 'Edit'){ %>
+        <form role="form" action="/dashboard/editAdmin/<%- data._id %>" method="POST">
+    <% } else { %>
+        <form role="form" action="/dashboard/newAdmin" method="POST">
+    <% }%>
+    <div class="card-body">
+        <div class="form-group">
+            <label>شماره تلفن</label>
+            <% if(type === 'Edit') { %>
+                <input type="tel" name="phoneNumber" value="<%- data.phoneNumber %>" class="form-control">
+            <% } else { %> 
+                <input type="tel" name="phoneNumber" class="form-control">
+            <% } %> 
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    <label>نام</label>
+                    <% if(type === 'Edit') { %>
+                        <input type="text" name="name" value="<%- data.name %>" class="form-control">
+                    <% } else { %> 
+                        <input type="text" name="name" class="form-control">
+                    <% } %> 
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    <label>نام خانوادگی</label>
+                    <% if(type === 'Edit') { %>
+                        <input type="text" name="lastname" value="<%- data.lastname %>" class="form-control">
+                    <% } else { %> 
+                        <input type="text" name="lastname" class="form-control">
+                    <% } %> 
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <% if(type !== 'Edit') { %>
+                <label>رمز عبور</label>
+                <input type="password" name="password" class="form-control">
+            <% } %> 
+            
+        </div>
+    </div>
+    <!-- /.card-body -->
+
+    <div class="card-footer">
+        <button type="submit" class="btn btn-outline-primary">ارسال</button>
+        <button type="reset" class="btn btn-outline-danger">پاک کردن اطلاعات</button>
+    </div>
+    </form>
+</div>
+<!-- /.card -->

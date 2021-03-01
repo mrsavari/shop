@@ -1,0 +1,275 @@
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    
+    <a href="/dashboard" class="brand-link d-flex justify-content-center">
+      <span class="brand-text font-weight-light">داشبرد به نصف</span>
+    </a>
+    
+    
+    <div class="sidebar">
+      <div>
+        
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex justify-content-center">
+          <div class="image">
+            <img src="<%- adminThumbnail %>" class="img-circle elevation-2" alt="User Image">
+          </div>
+          <div class="info">
+            <a href="#" class="d-block"><%- adminFullName %></a>
+          </div>
+        </div>
+        
+        
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fa fa-gear"></i>
+                <p>
+                  مدیریت سیستم
+                  <i class="right fa fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="/dashboard/Admins" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>کاربران داشبرد</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/dashboard/newAdmin" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>افزودن کاربر جدید</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/dashboard/newAccess" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>اعطای دسترسی</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fa fa-user"></i>
+                <p>
+                    مدیریت کاربران
+                  <i class="right fa fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="/dashboard/Users?page=1" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>مدیریت کاربران</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/dashboard/newUser" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>افزودن کاربر جدید</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fa fa-table"></i>
+                <p>
+                    مدیریت محصولات
+                  <i class="right fa fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="/dashboard/Products" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>مدیریت محصولات</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/dashboard/NewProduct" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>افزودن محصول جدید</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/dashboard/Comments" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>مدیریت نظرات</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fa fa-edit"></i>
+                <p>
+                    وضعیت سفارش ها
+                  <i class="right fa fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="/dashboard/Orders" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>همه ی سفارش ها</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/dashboard/Orders?30day=true" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>سفارش های در 30 روز طلایی</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fa fa-tree"></i>
+                <p>
+                    وضعیت کد های معرفی
+                  <i class="right fa fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="/dashboard/UsesIntroduces" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>مدیریت کد های معرفی</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/dashboard/UsesIntroduces?success=true" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>معرفی های موفق</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fa fa-paypal"></i>
+                <p>
+                    وضعیت پرداختی ها
+                  <i class="right fa fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="/dashboard/Payments" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>پرداخت های درگاه</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fa fa-plus"></i>
+                <p>
+                    درخواست محصول ها
+                  <i class="right fa fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="/dashboard/RequestProducts" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>مدیریت درخواست ها</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fa fa-xing"></i>
+                <p>
+                    تامین کنندگان
+                  <i class="right fa fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="/dashboard/Providers" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>مدیریت تامین کنندگان</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/dashboard/newProvider" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>افزودن تامین کننده</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fa fa-wordpress"></i>
+                <p>
+                    مدیریت وبسایت
+                  <i class="right fa fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>مدیریت صفحات</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>ساخت صفحه جدید</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/dashboard/Sliders" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>مدیریت اسلایدر</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fa fa-car"></i>
+                <p>
+                    خرید حضوری
+                  <i class="right fa fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="/dashboard/Persences" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>مدیریت روز ها</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/dashboard/ReserverPersences" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>مدیریت خریداران</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      
+      </div>
+    </div>
+  
+  </aside>

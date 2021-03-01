@@ -1,0 +1,30 @@
+<body class="bg-dark">
+    <div class="container bg-light mt-4 rounded">
+        <h1 class="float-right mt-3 mb-5"></h1>
+        <table class="table py-4">
+        <tbody>
+            <tr>
+                <th scope="col">شناسه پرداخت</th>
+                <th scope="col">زمان</th>
+                <th scope="col">مبلغ</th>
+                <th scope="col">وضعیت</th>
+            </tr>
+            <tr>
+                <td class="text-align-right"><%- data.id %></td>
+                <td><%- moment(data.time).format('jYYYY/jMM/jD ساعت HH:mm') %></td>
+                <td><%- data.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> ریال</td>
+                <td><%- pageTitle %></td>
+            </tr>
+        </tbody>
+        </table>
+
+        <div class="row pb-4">
+            <div class="col-12 col-md-6 d-flex justify-content-center">
+                <h2 class="float-right">شماره پیگیری : <kbd><%- data.token %></kbd></h2>
+            </div>
+            <div class="col-12 col-md-6 mt-3 mt-md-0 d-flex justify-content-center">
+                <button onclick="window.location='https://shop.ir/profile'" class="btn btn-primary">بازگشت به به نصف</button>
+            </div>
+        </div>
+    </div>
+</body>

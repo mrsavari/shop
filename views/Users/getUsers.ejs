@@ -1,0 +1,55 @@
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title"><%- pageTitle %></h3>
+        <h6 class="mt-2"><%- countTitle %> : <%- data.total || data.length %></h6>
+
+    <div class="card-tools">
+        <div class="input-group input-group-sm">
+            <input type="text" id="search_number" name="table_search" class="form-control float-right" placeholder="جستجو بر اساس شماره تلفن">
+
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-default" id="search_number_btn"><i class="fa fa-search" ></i></button>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="card-body table-responsive p-0">
+    <table class="table table-hover">
+        <tbody>
+            <tr>
+                <th>نام و نام خانوادگی</th>
+                <th>شماره تلفن</th>
+                <th>تاریخ ثبت نام</th>
+                <th>آخرین ورود</th>
+                <th>تایید تلفن</th>
+                <th>وضعیت اکانت</th>
+                <th>عملیات</th>
+            </tr>
+
+            <% data.docs.forEach(element => { %>
+                <tr>
+                    <td><%- element.uName %> <%- element.uLastName %></td>
+                    <td><%- element.uPhoneNumber %></td>
+                    <td><%- moment(element.RegistredAt).format('jYYYY/jMM/jD ساعت HH:mm') %></td>
+                    <td><%- moment(element.LastLogin).format('jYYYY/jMM/jD ساعت HH:mm') %></td>
+                    <% if(element.AuthenticationStatus === 'Verifyed'){ %>
+                        <td><span class="badge badge-success">تایید شده</span></td>
+                    <% } else { %>
+                        <td><span class="badge badge-warning">تایید نشده <%- element.SmsCode %></span></td>
+                    <% } %>
+                    <% if(element.uStatus === true){ %>
+                        <td><span class="badge badge-success">فعال</span></td>
+                    <% } else { %>
+                        <td><span class="badge badge-danger">غیر فعال</span></td>
+                    <% } %>
+                    
+                    <td>
+                        <a href="/dashboard/getUser/<%- element.id %>" class="btn-sm btn-primary">مشاهده</a>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    <%- include('../partials/Component_Paginate.ejs' , {data}) %>
+    </div>
+</div>

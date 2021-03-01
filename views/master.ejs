@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="EN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title><%- `${pageTitle} | ${webTitle} `%></title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <link rel="stylesheet" href="/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="/dist/css/bootstrap-rtl.min.css">
+  <link rel="stylesheet" href="/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+  <link rel="stylesheet" href="/dist/css/custom-style.css">
+
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+  <%- include('./partials/navBar') %>
+  
+  <%- include('./partials/sideBar') %>
+  
+
+  <div class="content-wrapper">
+  
+    <section class="content my-4">
+        <% if(success != '') { %>
+          <%- include('./Elements/alert.ejs' , {text : success , type : 'success'}) %>
+        <% } %>
+        <% if(error != '') { %>
+          <%- include('./Elements/alert.ejs' , {text : error , type : 'danger'}) %>
+        <% } %>
+
+        <%- body %>
+    </section>
+  
+  </div>
+
+</div>
+
+<script src="/plugins/jquery/jquery.min.js"></script>
+
+<script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<script src="/plugins/ckeditor/ckeditor.js"></script>
+
+<script src="/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+
+<!-- <script src="/plugins/chart.js/Chart.min.js"></script> -->
+
+<script src="/plugins/chartjs-old/Chart.min.js"></script>
+
+<script src="/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+
+<script src="/plugins/fastclick/fastclick.js"></script>
+
+<script src="/dist/js/adminlte.min.js"></script>
+
+<script src="/dist/js/demo.js"></script>
+
+<script src="/dist/js/dom.js"></script>
+<%- script %>
+</body>
+</html>

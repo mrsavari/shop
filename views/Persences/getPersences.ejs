@@ -1,0 +1,28 @@
+<div class="card">
+    <div class="card-header">
+    <h3 class="card-title"><%- pageTitle %></h3>
+
+    <div class="card-tools">
+        <div class="input-group input-group-sm">
+            <input type="text" name="table_search" class="form-control float-right" id="searched_name" placeholder="جستجو بر اساس نام محصول">
+
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-default" id="search_product_btn"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="card-body table-responsive p-0">
+        <h5 class="m-3">3 روز متوالی برای خرید حضوری : </h5>
+        <div class="alert alert-info mx-5">برای تعطیل کردن یک روز روی آن کلیک کنید</div>
+        <div class="container d-flex justify-content-center align-items-center py-2">
+            <% Persences.forEach(persence => { %>
+                <% if(persence.id) { %>
+                    <a href="/dashboard/delPersence/<%- persence.id %>" class="btn btn-outline-danger mx-2"><%- persence.date %></a>
+                <% } %>
+            <% }) %>
+        </div>
+        <hr class="mx-4">
+        <a class="btn btn-success mr-4 my-2" href="/dashboard/addPersences">افزودن دستی 3 روز متوالی</a>
+    </div>
+</div>

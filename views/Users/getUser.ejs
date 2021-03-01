@@ -1,0 +1,85 @@
+<div class="card card-dark">
+    <% if(success != '') { %>
+        <div class="alert alert-success" role="alert">
+            <%- success %>
+        </div>
+    <% } %>
+    <div class="card-header">
+        <h3 class="card-title"><%- pageTitle %></h3>
+    </div>
+    <% if(type === 'Edit'){ %>
+        <form role="form" action="/dashboard/editUser/<%- data._id %>" method="POST">
+    <% } else { %>
+        <form role="form" action="/dashboard/newUser" method="POST">
+    <% }%>
+    <div class="card-body">
+        <div class="form-group">
+            <label>شماره تلفن</label>
+            <% if(type === 'Edit') { %>
+                <input type="tel" name="uPhoneNumber" value="<%- data.uPhoneNumber %>" class="form-control">
+            <% } else { %> 
+                <input type="tel" name="uPhoneNumber" class="form-control">
+            <% } %> 
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    <label>نام</label>
+                    <% if(type === 'Edit') { %>
+                        <input type="text" name="uName" value="<%- data.uName %>" class="form-control">
+                    <% } else { %> 
+                        <input type="text" name="uName" class="form-control">
+                    <% } %> 
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    <label>نام خانوادگی</label>
+                    <% if(type === 'Edit') { %>
+                        <input type="text" name="uLastName" value="<%- data.uLastName %>" class="form-control">
+                    <% } else { %> 
+                        <input type="text" name="uLastName" class="form-control">
+                    <% } %> 
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <% if(type !== 'Edit') { %>
+                <label>رمز عبور</label>
+                <input type="password" name="uPassword" class="form-control">
+            <% } %> 
+            
+        </div>
+        <div class="form-group">
+            <label>ایمیل</label>
+            <% if(type === 'Edit') { %>
+                <% if(data.uEmail) { %>
+                    <input type="text" name="uEmail" value="<%- data.uEmail %>" class="form-control">
+                <% } else { %>
+                    <input type="text" name="uEmail" class="form-control">
+                <% } %>
+            <% } else { %> 
+                <input type="text" name="uEmail" class="form-control">
+            <% } %> 
+        </div>
+
+        <% if(type === 'Edit') { %>
+            <div class="form-group">
+                <label>وضعیت پرفایل</label>
+                <br>
+                <input type="radio" name="uStatus" value="true">
+                <label for="male">فعال</label><br>
+                <input type="radio" name="uStatus" value="false">
+                <label for="other">غیر فعال</label>
+            </div>
+        <% } %>
+    </div>
+    <!-- /.card-body -->
+
+    <div class="card-footer">
+        <button type="submit" class="btn btn-outline-primary">ارسال</button>
+        <button type="reset" class="btn btn-outline-danger">پاک کردن اطلاعات</button>
+    </div>
+    </form>
+</div>
+<!-- /.card -->

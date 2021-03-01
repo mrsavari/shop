@@ -1,0 +1,59 @@
+<div class="card">
+    <div class="card-header">
+    <h3 class="card-title"><%- pageTitle %></h3>
+    <h6 class="mt-2"><%- countTitle %> : <%- data.total || data.length %></h6>
+
+    <div class="card-tools">
+        <div class="input-group input-group-sm">
+            <input type="text" id="search_number" name="table_search" class="form-control float-right" placeholder="جستجو بر اساس شماره تلفن">
+
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-default" id="search_number_btn"><i class="fa fa-search" ></i></button>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="card-body table-responsive p-0">
+    <table class="table table-hover">
+        <tbody>
+            <tr>
+                <th>نام کاربر</th>
+                <th>تلفن کاربر</th>
+                <th>تاریخ</th>
+                <th>تاریخ تحویل</th>
+                <th>مبلغ</th>
+                <th>وضعیت</th>
+                <th>کد معرفی</th>
+                <th>عملیات</th>
+            </tr>
+            <% data.forEach(element => { %>
+                <% !element.userId ? element.userId = { uName:' ' , uLastName:' ' , uPhoneNumber :' ' } : ('') %>
+                <tr>
+                    <td><%- element.userId.uName %> <%- element.userId.uLastName %></td>
+                    <td><%- element.userId.uPhoneNumber %></td>
+                    <td><%- moment(element.Date).format('jYYYY/jMM/jD') %></td>
+                    <td><%- moment(element.ReciveDate).fromNow('jD') + ' دیگر' %></td>
+                    <td><%- element.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> ریال %></td>
+                    <% if(element.Status === 'NotPaid'){ %>
+                        <td><span class="badge badge-warning">پرداخت نشده</span></td>
+                    <% } else if(element.Status === 'Paid') { %>
+                        <td><span class="badge badge-info">در 30 روز طلایی</span></td>
+                    <% } else if (element.Status === 'Recived') { %>
+                        <td><span class="badge badge-success">تحویل داده شده</span></td>
+                    <% } else if (element.Status === 'Canceled') { %>
+                        <td><span class="badge badge-danger">کنسل شده</span></td>
+                    <% } else if (element.Status === 'PaymentFailed') { %>
+                        <td><span class="badge badge-danger">پرداخت ناموفق</span></td>
+                    <% } %>
+                    <td><%- element.IntroduceCode %></td>
+                    
+                    <td>
+                        <a href="/dashboard/getOrder/<%- element.id %>" class="btn-sm btn-primary">مشاهده</a>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    <%- include('../partials/Component_Paginate.ejs' , {data}) %>
+    </div>
+</div>

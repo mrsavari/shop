@@ -1,0 +1,55 @@
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title"><%- pageTitle %></h3>
+        <h6 class="mt-2"><%- countTitle %> : <%- data.total || data.length %></h6>
+
+    <div class="card-tools">
+        <div class="input-group input-group-sm">
+            <input type="text" id="search_number" name="table_search" class="form-control float-right" placeholder="جستجو بر اساس شماره تلفن">
+
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-default" id="search_number_btn"><i class="fa fa-search" ></i></button>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="card-body table-responsive p-0">
+    <table class="table table-hover">
+        <tbody>
+            <tr>
+                <th>نام کاربر</th>
+                <th>تلفن کاربر</th>
+                <th>مبلغ</th>
+                <th>تاریخ</th>
+                <th>وضعیت</th>
+                <th>عملیات</th>
+            </tr>
+            <% if(!data.length) { %> 
+                <div class="container">
+                    <div class="alert alert-danger" role="alert">
+                        <%- option.error %>
+                    </div>
+                </div>
+            <% } data.forEach(element => { %>
+                <% !element.customerId ? element.customerId = { uName:' ' , uLastName:' ' , uPhoneNumber :' ' } : ('') %>
+                <tr>
+                    <td><%- element.customerId.uName %> <%- element.customerId.uLastName %></td>
+                    <td><%- element.customerId.uPhoneNumber %> </td>
+                    <td><%- element.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> ریال %></td>
+                    <td><%- moment(element.Date).format('jYYYY/jMM/jD ساعت HH:mm') %></td>
+                    <% if(element.status === 'PaymentFailed' || element.status === 'StartPayment'){ %>
+                        <td><span class="badge badge-danger">پرداخت نشده</span></td>
+                    <% } else if(element.status === 'Paid') { %>
+                        <td><span class="badge badge-success">پرداخت موفق</span></td>
+                    <% } %>
+                    
+                    <td>
+                        <a href="/dashboard/getPayment/<%- element.id %>" class="btn-sm btn-primary">مشاهده</a>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    <%- include('../partials/Component_Paginate.ejs' , {data}) %>
+    </div>
+</div>

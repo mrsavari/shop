@@ -1,0 +1,14 @@
+<% if(ErrType == 'validation'){ %>
+    <div class="alert alert-danger" role="alert">
+        <h1 class="text-center">لطفا ارور های زیر را برطرف کنید</h1>
+        <% err.forEach(errs => { %>
+            <p class="text-center mt-4"><%- errs.msg %></p>
+        <% }) %>
+    </div>
+
+<% } else { %>
+    <div class="alert alert-danger" role="alert">
+        <h1 class="text-left">لطفا ارور های زیر را برطرف کنید</h1>
+        <p class="text-left"><%- err %></p>
+    </div>
+<% } %>

@@ -1,0 +1,77 @@
+<div class="card card-dark">
+    <div class="card-header">
+        <h3 class="card-title"><%- pageTitle %></h3>
+        <div class="card-tools">
+            <a href="/dashboard/Payments" class="btn btn-tool"><i class="fa fa-arrow-left"></i>
+            </a>
+        </div>
+    </div>
+    <form role="form" action="/dashboard/newAdmin" method="GET">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    <label>نام پرداخت کننده</label>
+                    <input disabled type="text" value="<%- data.customerId.uName %> <%- data.customerId.uLastName %>" class="form-control">
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    <label>تلفن پرداخت کننده</label>
+                    <input type="text" value="<%- data.customerId.uPhoneNumber %>" class="form-control" disabled>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    <label>مبلغ پرداختی</label>
+                    <input disabled type="text" value="<%- data.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') %> ریال" class="form-control">
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    <label>شماره کارت</label>
+                    <input type="text" value="<%- data.hashCardNumber %>" class="form-control" disabled>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    <label>توکن بانک</label>
+                    <input disabled type="text" value="<%- data.bankToken %>" class="form-control">
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    <label>وضعیت از سمت وبسایت</label>
+                    <input type="text" value="<%- data.status %>" class="form-control" disabled>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    <label>وضعیت از سمت بانک</label>
+                    <input disabled type="text" value="<%- data.statusBankCode %>" class="form-control">
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    <label>پیام</label>
+                    <input type="text" value="<%- data.message %>" class="form-control" disabled>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.card-body -->
+
+    <div class="card-footer">
+    </div>
+    </form>
+</div>
+<!-- /.card -->

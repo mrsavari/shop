@@ -1,0 +1,42 @@
+<div class="card">
+    <div class="card-header">
+    <h3 class="card-title"><%- pageTitle %></h3>
+    <h6 class="mt-2"><%- countTitle %> : <%- data.total || data.length %></h6>
+
+    <div class="card-tools">
+        <div class="input-group input-group-sm">
+            <input type="text" name="table_search" class="form-control float-right" id="searched_name" placeholder="جستجو بر اساس نام محصول">
+
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-default" id="search_product_btn"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="card-body table-responsive p-0">
+    <table class="table table-hover">
+        <tbody>
+            <tr>
+                <th>نام</th>
+                <th>نام انگلیسی</th>
+                <th>تاریخ عضویت</th>
+                <th>تعداد خرید</th>
+                <th>عملیات</th>
+            </tr>
+            <% data.docs.forEach(element => { %>
+                <tr>
+                    <td><%- element.name %></td>
+                    <td><%- element.englishName %></td>
+                    <td><%- moment(element.registredAt).format('jYYYY/jMM/jD') %></td>
+                    <td><%- element.BuyCount %></td>
+                    <td>
+                        <a href="/dashboard/delProvider/<%- element.id %>" class="btn-sm btn-danger" >حذف</a>
+                        <a href="/dashboard/getProvider/<%- element.id %>" class="btn-sm btn-primary">مشاهده</a>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    <%- include('../partials/Component_Paginate.ejs' , {data}) %>
+    </div>
+</div>
